@@ -1,0 +1,179 @@
+---
+title: "PROYECTO_FINAL_SOLIS_CASAS_RONALDO_FABRICIOO"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+library(readr)
+s14_glucosa_circun <- read_csv("C:/Users/Usuario/Downloads/s14_glucosa_circun.csv")
+View(s14_glucosa_circun)
+data<-(s14_glucosa_circun)
+data_limpia<-data[!is.na(data$glucosa),]
+mean(data_limpia$glucosa)
+```
+
+```{r}
+#INSTALACIÓN DE PAQUETES 
+install.packages("readr")
+install.packages("ggplot2")
+```
+
+```{r}
+#HISTOGRAMA
+hist (data_limpia$glucosa,
+main = "Histograma de Glucosa",
+xlab = "Nivel de Glucosa",
+ylab = "Frecuencia",
+breaks = 12,
+col = "red")
+```
+
+```{r}
+#MEDIDAS DE TENDENCIA CENTRAL
+#media aritmetíca
+mean(data_limpia$glucosa)
+```
+
+```{r}
+#mediana
+median(data_limpia$glucosa)
+```
+
+```{r}
+#moda
+mode_glucosa<-names(sort(table(data_limpia$glucosa), decreasing = TRUE))
+```
+
+```{r}
+#HALLAMOS LAS MEDIDAS DE DISPERSIÓN 
+#varianza
+var(data_limpia$glucosa, na.rm = TRUE)
+```
+
+```{r}
+#DESVIACIÓN ESTANDAR
+sd(data_limpia$glucosa, na.rm = TRUE)
+```
+
+```{r}
+#RANGO
+range(data_limpia$glucosa, na.rm = TRUE)
+```
+
+```{r}
+#RANGO INTERCUARTILICO
+IQR(data_limpia$glucosa, na.rm = TRUE)
+```
+
+```{r}
+#MEDIDAS DE POSICION
+quantile(data_limpia$glucosa, probs = c(0.25, 0.75, 0.90), na.rm = TRUE)
+```
+
+```{r}
+#LAS 6 PRIMERAS FILAS
+head(data_limpia$glucosa)
+```
+
+```{r}
+#RESUMEN
+summary(data_limpia$glucosa)
+```
+
+```{r}
+#IMPORTAR LA DATA CON LA QUE SE VA A TRABAJAR
+library(readr)
+s13_hemodialisis <- read_csv("C:/Users/Usuario/Downloads/s13_hemodialisis.csv")
+View(s13_hemodialisis)
+```
+
+```{r}
+#VER LAS 6 PRIMERAS FILAS 
+head(data)
+```
+
+```{r}
+#ESTRUCTURA DE LA DATA
+str(data)
+```
+
+```{r}
+#MEDIDAS DE TENDENCIA CENTRAL
+#medida aritmética
+mean(data$edad)
+mean(data$trigliceridos)
+```
+
+```{r}
+#MEDIANA
+median(data$edad)
+median(data$trigliceridos)
+```
+
+```{r}
+#MODA EDAD
+mode_edad<- names(sort(table(data$trigliceridos),decreasing = TRUE))
+```
+
+```{r}
+#MODA TRIGLICERIDOS
+mode_edad<- names(sort(table(data$trigliceridos), decreasing = TRUE))
+```
+
+```{r}
+#MEDIDAS DE DISPERSIÓN
+#varianza
+var(data$edad,na.rm = TRUE)
+var(data$trigliceridos,na.rm = TRUE)
+```
+
+```{r}
+#DESVIACION ESTANDAR
+sd(data$edad,na.rm = TRUE)
+sd(data$trigliceridos,na.rm = TRUE)
+```
+
+```{r}
+#RANGO
+range(data$edad,na.rm = TRUE)
+range(data$trigliceridos,na.rm = TRUE)
+```
+
+```{r}
+#RANGO INTERCUARTILICO
+IQR(data$edad,na.rm = TRUE)
+IQR(data$trigliceridos,na.rm = TRUE)
+```
+
+```{r}
+#MEDIDAS DE POSICION
+quantile(data$edad,probs = c(0.25,0.5,0.75,0.90),na.rm = TRUE)
+quantile(data$trigliceridos,probs = c(0.25,0.5,0.75,0.90),na.rm = TRUE)
+```
+
+```{r}
+#RESUMEN
+summary(data$edad)
+summary(data$trigliceridos)
+```
+
+```{r}
+#RESUMEN DE TODAS LAS VARIABLES
+summary(data)
+```
+
+```{r}
+#VISUALIZACION GRAFICA
+#HISTOGRAMA
+ggplot(data,aes(x=edad))+geom_histogram(bins = 30)+theme_minimal()
+ggplot(data,aes(x=trigliceridos))+geom_histogram(bins = 30)+theme_minimal()
+```
